@@ -1,13 +1,12 @@
-package com.example.fragmentando
+package com.example.fragmentando.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
-import androidx.activity.enableEdgeToEdge
+import android.os.Message
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.fragmentando.R
 import com.example.fragmentando.databinding.ActivityMainBinding
+import com.example.fragmentando.model.Mensage
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
@@ -15,18 +14,21 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         binding.enviar.setOnClickListener {
-            val intent = Intent(this,BoasVindasActivity::class.java )
-            intent.putExtra("mensage", binding.mensage.text.toString())
+            Mensage.mensagem = binding.mensage.text.toString()
+           // texto.msn = binding.mensage.text.toString()
+
+            val intent = Intent(this, BoasVindasActivity::class.java )
             startActivity(intent)
         }
 
     }
-
-
-
 }
+
+//object texto {var msn: String? = null}
+// > Funciona igual
