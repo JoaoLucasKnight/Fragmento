@@ -1,11 +1,13 @@
 package com.example.fragmentando.activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Message
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import com.example.fragmentando.R
 import com.example.fragmentando.databinding.ActivityMainBinding
+import com.example.fragmentando.fragment.Msn
 import com.example.fragmentando.model.Mensage
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
@@ -18,13 +20,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
         binding.enviar.setOnClickListener {
-            Mensage.mensagem = binding.mensage.text.toString()
-           // texto.msn = binding.mensage.text.toString()
 
-            val intent = Intent(this, BoasVindasActivity::class.java )
-            startActivity(intent)
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                add<Msn>(binding.fragMsn.id)
+            }
         }
 
     }
