@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fragmentando.R
-import com.example.fragmentando.databinding.ActivityMainBinding
 import com.example.fragmentando.databinding.ListMsnBinding
 
 import com.example.fragmentando.model.Mensage
@@ -24,8 +23,6 @@ class Msn: Fragment(R.layout.list_msn) {
         }?: throw IllegalArgumentException ("Contexto invalido")
     }
 
-
-
     private lateinit var binding: ListMsnBinding
 
     override fun onCreateView(
@@ -39,15 +36,8 @@ class Msn: Fragment(R.layout.list_msn) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val teste = ActivityMainBinding.inflate(layoutInflater)
-        msn.adicionar(Mensage(
-            mensagem = teste.mensage.text.toString()
-        ))
         configRecycler()
     }
-
-
-
     fun configRecycler(){
         binding.list.run {
             this.adapter = adptado

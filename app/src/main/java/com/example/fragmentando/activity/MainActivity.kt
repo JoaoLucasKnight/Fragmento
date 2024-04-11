@@ -12,6 +12,7 @@ import com.example.fragmentando.model.Mensage
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
+
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
@@ -20,11 +21,19 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        binding.enviar.setOnClickListener {
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            add<Msn>(binding.fragMsn.id)
+        }
 
+        binding.enviar.setOnClickListener {
+            val msn = Mensage(
+                mensagem = binding.mensage.text.toString()
+            )
+            Mensage().adicionar(msn)
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
-                add<Msn>(binding.fragMsn.id)
+                replace<Msn>(binding.fragMsn.id)
             }
         }
 

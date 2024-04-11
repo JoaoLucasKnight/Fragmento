@@ -12,7 +12,7 @@ class Mensage(
     companion object{
         private val mensagens = mutableListOf(
             Mensage(
-                mensagem = "Que mensgaem você gostaria de receber agora?"
+                mensagem = "Que mensagem você gostaria de receber agora?"
             )
         )
     }
